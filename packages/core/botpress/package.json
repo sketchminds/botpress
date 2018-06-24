@@ -65,7 +65,7 @@
     "yn": "^2.0.0"
   },
   "optionalDependencies": {
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^4.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
@@ -131,7 +131,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "engines": {
-    "node": ">=6.10.0 <9.0.0"
+    "node": ">=6.10.0"
   },
   "homepage": "https://botpress.io",
   "keywords": [
@@ -151,23 +151,18 @@
   "license": "AGPL-3.0",
   "main": "lib/node.bundle.js",
   "repository": "git+https://github.com/botpress/botpress.git",
-  "os": [
-    "darwin",
-    "linux",
-    "win32"
-  ],
+  "os": ["darwin", "linux", "win32"],
   "scripts": {
     "prepublishOnly": "npm run compile-prod",
     "compile": "./build.sh",
     "compile-prod": "NODE_ENV=production ./build.sh",
     "test": "BABEL_ENV=tests mocha --compilers js:babel-core/register --require tests/index.js tests/**",
-    "watch": "rm -rf ./lib/web && concurrently -k \"node ./webpack.server.js --watch\" \"node ./webpack.web.js --watch\""
+    "watch":
+      "rm -rf ./lib/web && concurrently -k \"node ./webpack.server.js --watch\" \"node ./webpack.web.js --watch\""
   },
   "watch": {
     "compile": {
-      "patterns": [
-        "src"
-      ],
+      "patterns": ["src"],
       "extensions": "js,jsx,scss,json,html"
     }
   }
