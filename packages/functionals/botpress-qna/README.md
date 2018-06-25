@@ -24,6 +24,31 @@ The following properties can be configured either in the `qna.json` file or usin
 
 Go to the bot admin panel and choose Q&A from the left hand side menu.
 
+## Programmatic usage
+
+`botpress-qna` exposes public API for importing/exporting questions: `bp.qna.import` and `bp.qna.export`.
+See examples below on how to use them.
+
+```js
+const questionsFlat = [
+  { question: 'Question1', action: 'text', answer: 'Answer1' },
+  { question: 'Question2', action: 'text', answer: 'Answer1' },
+  { question: 'Question3', action: 'redirect', answer: 'main.flow.json#some-node' }
+]
+
+await bp.qna.import(questionsFlat)
+
+const questionsMultiple = [
+  { questions: ['Question1', 'Question2', action: 'text', answer: 'Answer1' },
+  { questions: 'Question3', action: 'redirect', answer: 'main.flow.json#some-node' }
+]
+
+await bp.qna.import(questionsMultiple, { mergeRows: false })
+
+const questionsFlatExported = await bp.qna.export(questions) // Should return structure similar to questionsFlat
+const questionsMultipleExported = await bp.qna.export(questions, { flat: false }) // Should return structure similar to questionsMultiple
+```
+
 # Contributing
 
 The best way to help right now is by helping with the exising issues here on GitHub and by reporting new issues!
